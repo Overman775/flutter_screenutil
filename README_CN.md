@@ -46,7 +46,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 在使用之前请设置好设计稿的宽度和高度，传入设计稿的宽度和高度(单位随意,但在使用过程中必须保持一致)
 一定要进行初始化(只需设置一次),以保证在每次使用之前设置好了适配尺寸:
 
-```
+```dart
 //填入设计稿中设备的屏幕尺寸
 
 void main() => runApp(MyApp());
@@ -54,18 +54,17 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        //设置适配尺寸 (填入设计稿中设备的屏幕尺寸) 此处假如设计稿是按iPhone6的尺寸设计的(iPhone6 750*1334)
-        ScreenUtil.init(constraints, designSize: Size(750, 1334), allowFontScaling: false);
-
-        return MaterialApp(
-            ...
-        );
-      },
+    //设置适配尺寸 (填入设计稿中设备的屏幕尺寸) 此处假如设计稿是按iPhone6的尺寸设计的(iPhone6 750*1334)
+    return ScreenUtilInit(
+      designSize: Size(750, 1334),
+      allowFontScaling: false,
+      child: MaterialApp(
+        ...
+      ),
     );
   }
 }
+
 //默认 width : 1080px , height:1920px , allowFontScaling:false
 ScreenUtil.init(constraints);
 
